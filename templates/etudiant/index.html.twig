@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtudiantController!{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+        Liste des etudiants
+
+        </div>
+
+        <div class="card-body">
+            <a href="{{ path('etudiants.create') }}" class="btn btn-success mb-2">Ajouter</a>
+
+    <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Email</th>
+        {# <th scope="col">?</th> #}
+        </tr>
+    </thead>
+    <tbody>
+        {% for etudiant in etudiants %}
+            <tr>
+                <th scope="row">{{ etudiant.id }}</th>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom  }}</td>
+                <td>{{ etudiant.email }}</td>
+                <td>
+                    <a href="{{ path('etudiants.edit',{'id':etudiant.id}) }}" class="btn btn-primary btn-sm">EDIT</a>
+                    <a href="{{ path('etudiants.destory',{'id':etudiant.id}) }}" class="btn btn-danger btn-sm">DELETE</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+        </div>
+    </div>
+
+{% endblock %}
